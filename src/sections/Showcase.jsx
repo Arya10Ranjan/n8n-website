@@ -1,21 +1,30 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './Showcase.css'
 
+// Light-blue family — active card sits deepest, neighbours read lighter.
+const SHADES = [
+  'linear-gradient(158deg, #6FC3F7 0%, #2E86D9 100%)',
+  'linear-gradient(158deg, #8AD1FA 0%, #3D95E2 100%)',
+  'linear-gradient(158deg, #5FB8F5 0%, #2678CE 100%)',
+  'linear-gradient(158deg, #93D6FB 0%, #4A9DE6 100%)',
+  'linear-gradient(158deg, #7ACAF8 0%, #348ADD 100%)',
+]
+
 // Placeholder copy — swap the title/sub strings when you send the real ones.
 const DECKS = {
   dsl: [
-    { title: 'Discover', sub: 'We map every manual step your team repeats.', color: '#7c5cff' },
-    { title: 'Design', sub: 'A workflow blueprint built around your stack.', color: '#e0763a' },
-    { title: 'Scale', sub: 'From one task to millions, effortlessly.', color: '#3aa0e0' },
-    { title: 'Monitor', sub: 'Live logs and alerts on every run.', color: '#31b58a' },
-    { title: 'Ship', sub: 'Deploy automations in minutes, not weeks.', color: '#d94f7e' },
+    { title: 'Discover', sub: 'We map every manual step your team repeats.' },
+    { title: 'Design', sub: 'A workflow blueprint built around your stack.' },
+    { title: 'Scale', sub: 'From one task to millions, effortlessly.' },
+    { title: 'Monitor', sub: 'Live logs and alerts on every run.' },
+    { title: 'Ship', sub: 'Deploy automations in minutes, not weeks.' },
   ],
   vsl: [
-    { title: 'Script', sub: 'A story engineered to hold attention.', color: '#e0763a' },
-    { title: 'Record', sub: 'Studio-grade capture, zero production drag.', color: '#3aa0e0' },
-    { title: 'Edit', sub: 'Cut, caption and polish on autopilot.', color: '#7c5cff' },
-    { title: 'Publish', sub: 'One click to every channel you run.', color: '#d94f7e' },
-    { title: 'Convert', sub: 'Track the views that turn into revenue.', color: '#31b58a' },
+    { title: 'Script', sub: 'A story engineered to hold attention.' },
+    { title: 'Record', sub: 'Studio-grade capture, zero production drag.' },
+    { title: 'Edit', sub: 'Cut, caption and polish on autopilot.' },
+    { title: 'Publish', sub: 'One click to every channel you run.' },
+    { title: 'Convert', sub: 'Track the views that turn into revenue.' },
   ],
 }
 
@@ -71,6 +80,8 @@ export default function Showcase() {
 
   return (
     <section className="showcase" id="how-it-works">
+      <div className="showcase-tint" aria-hidden="true" />
+
       <div className="container showcase-head">
         <h2>It&apos;s simple, responsive and fast.</h2>
         <p>Pick a track and step through how we take it from idea to live.</p>
@@ -111,29 +122,36 @@ export default function Showcase() {
             if (off < -count / 2) off += count
             const abs = Math.abs(off)
             const hidden = abs > 2
+            const isActive = off === 0
 
             return (
               <article
                 key={s.title}
-                className={`card ${off === 0 ? 'is-active' : ''}`}
-                aria-hidden={off !== 0}
+                className={`card ${isActive ? 'is-active' : ''}`}
+                aria-hidden={!isActive}
+                onClick={() => !isActive && !hidden && go(off)}
                 style={{
-                  background: s.color,
+                  backgroundImage: SHADES[i % SHADES.length],
                   zIndex: 10 - abs,
-                  opacity: hidden ? 0 : 1 - abs * 0.28,
-                  pointerEvents: off === 0 ? 'auto' : 'none',
+                  opacity: hidden ? 0 : 1 - abs * 0.35,
+                  filter: isActive ? 'none' : `blur(${abs * 1.6}px)`,
+                  pointerEvents: hidden ? 'none' : 'auto',
+                  cursor: isActive ? 'default' : 'pointer',
                   transform: `
-                    translateX(${off * 58}%)
-                    scale(${1 - abs * 0.14})
-                    rotateY(${off * -16}deg)
+                    translateX(${off * 74}%)
+                    translateZ(${-abs * 190}px)
+                    scale(${1 - abs * 0.06})
+                    rotateY(${off * -24}deg)
                   `,
                 }}
               >
-                <span className="card-num">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3>{s.title}</h3>
-                <p>{s.sub}</p>
+                <div className="card-body">
+                  <span className="card-num">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3>{s.title}</h3>
+                  <p>{s.sub}</p>
+                </div>
               </article>
             )
           })}
