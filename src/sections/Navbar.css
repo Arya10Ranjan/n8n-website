@@ -29,6 +29,9 @@
 
 
 .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   position: relative;
   z-index: 1;
   flex: none;
@@ -41,6 +44,12 @@
 }
 
 .nav-logo:hover { opacity: 0.78; }
+
+.nav-mark {
+  width: 44px;
+  height: auto;
+  flex: none;
+}
 
 .nav-links {
   position: relative;
@@ -136,6 +145,7 @@
 @media (max-width: 980px) {
   .nav { height: 68px; padding: 0 8px 0 18px; }
   .nav-logo { font-size: 20px; }
+  .nav-mark { width: 38px; }
 
   .nav-toggle { display: flex; }
 

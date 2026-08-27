@@ -47,6 +47,28 @@ function AffiliateIcon() {
   )
 }
 
+function N8nMark() {
+  return (
+    <svg className="nav-mark" viewBox="0 0 112 58" aria-hidden="true">
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M17 29h11" />
+        <path d="M45 29c9 0 9-14 18-14h13" />
+        <path d="M45 29c9 0 9 14 18 14h6" />
+        <circle cx="10" cy="29" r="6.5" />
+        <circle cx="35" cy="29" r="6.5" />
+        <circle cx="88" cy="15" r="9" />
+        <circle cx="81" cy="43" r="9" />
+      </g>
+    </svg>
+  )
+}
+
 const links = [
   { label: 'Home', href: '#top', Icon: HomeIcon },
   { label: 'Join My Community', href: '#community', Icon: CommunityIcon },
@@ -83,9 +105,9 @@ export default function Navbar() {
     <div className="nav-wrap">
       <header className={`nav ${stuck ? "is-stuck" : ""}`}>
         <a href="#top" className="nav-logo" aria-label="n8n — home">
-          n8n
+          <N8nMark />
+          <span>n8n</span>
         </a>
-
         <nav className={`nav-links ${open ? 'is-open' : ''}`}>
           {links.map(({ label, href, Icon }) => (
             <a key={label} href={href} onClick={() => setOpen(false)}>
