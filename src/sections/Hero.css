@@ -1,0 +1,111 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 980px;
+  padding: 210px 24px 0;
+  overflow: hidden;
+  background: #fff;
+  isolation: isolate;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: 1180px;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(10px);
+  color: #f0b9c8;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-badge svg { color: #fff; }
+
+.hero-title {
+  margin: 52px 0 0;
+  color: #fff;
+  font-size: clamp(44px, 7.6vw, 108px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.hero-sub {
+  margin: 50px auto 0;
+  max-width: 900px;
+  color: rgba(255, 255, 255, 0.93);
+  font-size: clamp(17px, 1.6vw, 25px);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 60px;
+  padding: 21px 42px;
+  border-radius: 999px;
+  background: #fff;
+  color: #10121a;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.5);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 50px -14px rgba(0, 0, 0, 0.55);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 760px;
+    padding-top: 170px;
+  }
+
+  .hero-title { margin-top: 38px; }
+  .hero-sub { margin-top: 32px; }
+  .hero-sub br { display: none; }
+  .hero-cta { margin-top: 42px; padding: 17px 32px; font-size: 17px; }
+}
+
+@media (max-width: 560px) {
+  .hero { min-height: 640px; padding-top: 140px; }
+
+  .hero-badge {
+    padding: 9px 18px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-cta { margin-top: 34px; }
+}
