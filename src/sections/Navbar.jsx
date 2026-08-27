@@ -49,21 +49,21 @@ function AffiliateIcon() {
 
 function N8nMark() {
   return (
-    <svg className="nav-mark" viewBox="0 0 112 58" aria-hidden="true">
+    <svg className="nav-mark" viewBox="0 0 96 60" aria-hidden="true">
       <g
         fill="none"
-        stroke="currentColor"
-        strokeWidth="7"
+        stroke="#EA4B71"
+        strokeWidth="6"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M17 29h11" />
-        <path d="M45 29c9 0 9-14 18-14h13" />
-        <path d="M45 29c9 0 9 14 18 14h6" />
-        <circle cx="10" cy="29" r="6.5" />
-        <circle cx="35" cy="29" r="6.5" />
-        <circle cx="88" cy="15" r="9" />
-        <circle cx="81" cy="43" r="9" />
+        <path d="M18.5 30h7" />
+        <path d="M38.5 30c7.5 0 7.5-14 15-14h9" />
+        <path d="M38.5 30c7.5 0 7.5 14 15 14h1" />
+        <circle cx="12" cy="30" r="6.5" />
+        <circle cx="32" cy="30" r="6.5" />
+        <circle cx="70" cy="16" r="7.5" />
+        <circle cx="62" cy="44" r="7.5" />
       </g>
     </svg>
   )
