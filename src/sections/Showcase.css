@@ -1,0 +1,212 @@
+.showcase {
+  position: relative;
+  padding: 110px 0 120px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.showcase-head {
+  text-align: center;
+}
+
+.showcase-head h2 {
+  font-size: clamp(30px, 4.4vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.showcase-head > p {
+  margin: 18px auto 0;
+  max-width: 620px;
+  font-size: 18px;
+  color: var(--text);
+}
+
+/* --- DSL / VSL toggle --- */
+.toggle {
+  position: relative;
+  display: inline-flex;
+  margin-top: 36px;
+  padding: 5px;
+  border: 1px solid #e6e8ef;
+  border-radius: 999px;
+  background: #f3f4f8;
+  box-shadow: 0 1px 2px rgba(16, 18, 26, 0.05) inset;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(50% - 5px);
+  height: calc(100% - 10px);
+  border-radius: 999px;
+  background: var(--ink);
+  box-shadow: 0 6px 16px -6px rgba(16, 18, 26, 0.55);
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.toggle-btn {
+  position: relative;
+  z-index: 1;
+  min-width: 108px;
+  padding: 12px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #6b7080;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: color 0.28s ease;
+}
+
+.toggle-btn.is-active { color: #fff; }
+
+/* --- carousel stage --- */
+.stage {
+  position: relative;
+  margin-top: 64px;
+  height: 460px;
+  perspective: 1600px;
+  outline: none;
+}
+
+.track {
+  position: relative;
+  width: min(620px, 78vw);
+  height: 100%;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  animation: deck-in 0.45s ease both;
+}
+
+@keyframes deck-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  border-radius: 26px;
+  color: #fff;
+  text-align: center;
+  transform-origin: center center;
+  box-shadow: 0 34px 70px -34px rgba(16, 18, 26, 0.6);
+  transition:
+    transform 0.55s cubic-bezier(0.4, 0.05, 0.2, 1),
+    opacity 0.45s ease;
+  will-change: transform;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.16), transparent 55%);
+  pointer-events: none;
+}
+
+.card-num {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  opacity: 0.85;
+}
+
+.card h3 {
+  margin: 14px 0 0;
+  color: #fff;
+  font-size: clamp(34px, 4.6vw, 58px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.card p {
+  margin: 16px auto 0;
+  max-width: 380px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* --- arrows --- */
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin-top: -29px;
+  border: 1px solid #e6e8ef;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 12px 28px -12px rgba(16, 18, 26, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.arrow:hover {
+  transform: scale(1.07);
+  box-shadow: 0 16px 34px -12px rgba(16, 18, 26, 0.55);
+}
+
+.arrow:active { transform: scale(0.96); }
+
+.arrow-prev { left: max(24px, calc(50% - min(310px, 39vw) - 100px)); }
+.arrow-next { right: max(24px, calc(50% - min(310px, 39vw) - 100px)); }
+
+/* --- dots --- */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 52px;
+}
+
+.dots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #d3d6e0;
+  cursor: pointer;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.dots button.is-on {
+  width: 30px;
+  background: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .showcase { padding: 80px 0 90px; }
+  .stage { height: 400px; margin-top: 48px; }
+  .arrow { width: 50px; height: 50px; margin-top: -25px; }
+  .arrow-prev { left: 14px; }
+  .arrow-next { right: 14px; }
+}
+
+@media (max-width: 560px) {
+  .stage { height: 350px; }
+  .track { width: 84vw; }
+  .card { padding: 28px; border-radius: 22px; }
+  .card p { font-size: 16px; }
+  .toggle-btn { min-width: 88px; padding: 11px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .toggle-thumb, .track { transition: none; animation: none; }
+}

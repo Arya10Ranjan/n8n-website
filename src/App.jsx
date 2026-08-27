@@ -1,5 +1,6 @@
 import Hero from './sections/Hero'
 import Navbar from './sections/Navbar'
+import Showcase from './sections/Showcase'
 
 export default function App() {
   return (
@@ -8,6 +9,9 @@ export default function App() {
         <Navbar />
         <Hero />
       </div>
+      <main>
+        <Showcase />
+      </main>
     </>
   )
 }
