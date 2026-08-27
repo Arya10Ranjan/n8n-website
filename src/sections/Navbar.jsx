@@ -5,7 +5,6 @@ const links = [
   { label: 'Home', href: '#top' },
   { label: 'Join My Community', href: '#community' },
   { label: 'Affiliate', href: '#affiliate' },
-  { label: 'Pricing', href: '#pricing' },
 ]
 
 function Arrow() {
