@@ -82,8 +82,8 @@ export default function Navbar() {
   return (
     <div className="nav-wrap">
       <header className={`nav ${stuck ? "is-stuck" : ""}`}>
-        <a href="#top" className="nav-logo" aria-label="N8N — home">
-          N8N
+        <a href="#top" className="nav-logo" aria-label="n8n — home">
+          n8n
         </a>
 
         <nav className={`nav-links ${open ? 'is-open' : ''}`}>

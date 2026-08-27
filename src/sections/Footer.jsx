@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <span className="footer-mark">N8N</span>
+          <span className="footer-mark">n8n</span>
           <p className="footer-name">Automations by Rahul</p>
           <p className="footer-desc">
             Building scalable n8n workflows for businesses that want to grow
