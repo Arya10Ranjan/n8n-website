@@ -71,7 +71,12 @@ function N8nMark() {
 
 const links = [
   { label: 'Home', href: '#top', Icon: HomeIcon },
-  { label: 'Join My Community', href: '#community', Icon: CommunityIcon },
+  {
+    label: 'Join My Community',
+    href: 'https://www.skool.com/the-sparrow-nest-1884/about?ref=9d4d2ea6b175431698fab065d0c9f25c',
+    Icon: CommunityIcon,
+    external: true,
+  },
   { label: 'Affiliate', href: '#affiliate', Icon: AffiliateIcon },
 ]
 
@@ -109,8 +114,15 @@ export default function Navbar() {
           <span>n8n</span>
         </a>
         <nav className={`nav-links ${open ? 'is-open' : ''}`}>
-          {links.map(({ label, href, Icon }) => (
-            <a key={label} href={href} onClick={() => setOpen(false)}>
+          {links.map(({ label, href, Icon, external }) => (
+            <a
+              key={label}
+              href={href}
+              onClick={() => setOpen(false)}
+              {...(external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+            >
               <Icon />
               {label}
             </a>
