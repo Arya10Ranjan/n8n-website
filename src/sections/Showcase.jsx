@@ -32,6 +32,51 @@ const MODES = [
   { id: 'vsl', label: 'VSL' },
 ]
 
+function Arrow({ dir }) {
+  return (
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+      <path
+        d={dir === 'prev' ? 'M15 5l-7 7 7 7' : 'M9 5l7 7-7 7'}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+// Resting transform for a slide, by its distance from the active one.
+function slideStyle(off) {
+  const abs = Math.abs(off)
+  const dir = Math.sign(off)
+
+  if (abs === 0) {
+    return {
+      transform: 'translateX(0) translateZ(0) rotateY(0deg) scale(1)',
+      opacity: 1,
+      zIndex: 5,
+    }
+  }
+
+  if (abs === 1) {
+    return {
+      // hinged door: swung out to the side, angled away from the viewer
+      transform: `translateX(${dir * 86}%) translateZ(-220px) rotateY(${-dir * 42}deg) scale(0.78)`,
+      opacity: 0.45,
+      zIndex: 3,
+    }
+  }
+
+  // parked further out, invisible — these are what swing in next
+  return {
+    transform: `translateX(${dir * 140}%) translateZ(-320px) rotateY(${-dir * 52}deg) scale(0.7)`,
+    opacity: 0,
+    zIndex: 1,
+  }
+}
+
 export default function Showcase() {
   const [mode, setMode] = useState('dsl')
   const [active, setActive] = useState(0)
@@ -61,10 +106,6 @@ export default function Showcase() {
     el.addEventListener('keydown', onKey)
     return () => el.removeEventListener('keydown', onKey)
   }, [go])
-
-  const prev = (active - 1 + count) % count
-  const next = (active + 1) % count
-  const card = slides[active]
 
   return (
     <section className="showcase" id="how-it-works">
@@ -103,49 +144,69 @@ export default function Showcase() {
         aria-roledescription="carousel"
         aria-label={`${mode.toUpperCase()} steps`}
       >
-        <button
-          type="button"
-          className="door door-prev"
-          style={{ backgroundImage: SHADES[prev % SHADES.length] }}
-          onClick={() => go(-1)}
-          aria-label={`Previous: ${slides[prev].title}`}
-        >
-          <span className="door-label">Prev</span>
-        </button>
+        <div className="track">
+          {slides.map((s, i) => {
+            let off = i - active
+            if (off > count / 2) off -= count
+            if (off < -count / 2) off += count
 
-        <div className="deck">
-          <article className="card" key={`${mode}-${active}`}>
-            <div className="card-body">
-              <span className="card-num">
-                {String(active + 1).padStart(2, '0')}
-              </span>
-              <h3>{card.title}</h3>
-              <p>{card.sub}</p>
-            </div>
+            const isActive = off === 0
+            const isDoor = Math.abs(off) === 1
+            const style = slideStyle(off)
 
-            <div className="dots">
-              {slides.map((s, i) => (
-                <button
-                  key={s.title}
-                  type="button"
-                  className={i === active ? 'is-on' : ''}
-                  onClick={() => setActive(i)}
-                  aria-label={`Go to ${s.title}`}
-                />
-              ))}
-            </div>
-          </article>
+            return (
+              <article
+                key={s.title}
+                className={`card ${isActive ? 'is-active' : 'is-door'}`}
+                aria-hidden={!isActive}
+                onClick={() => isDoor && go(off)}
+                style={{
+                  ...style,
+                  backgroundImage: SHADES[i % SHADES.length],
+                  pointerEvents: isDoor ? 'auto' : isActive ? 'auto' : 'none',
+                  cursor: isDoor ? 'pointer' : 'default',
+                }}
+              >
+                <div className="card-body">
+                  <span className="card-num">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3>{s.title}</h3>
+                  <p>{s.sub}</p>
+                </div>
+              </article>
+            )
+          })}
         </div>
 
         <button
           type="button"
-          className="door door-next"
-          style={{ backgroundImage: SHADES[next % SHADES.length] }}
-          onClick={() => go(1)}
-          aria-label={`Next: ${slides[next].title}`}
+          className="nav-arrow nav-arrow-prev"
+          onClick={() => go(-1)}
+          aria-label="Previous slide"
         >
-          <span className="door-label">Next</span>
+          <Arrow dir="prev" />
         </button>
+        <button
+          type="button"
+          className="nav-arrow nav-arrow-next"
+          onClick={() => go(1)}
+          aria-label="Next slide"
+        >
+          <Arrow dir="next" />
+        </button>
+
+        <div className="dots">
+          {slides.map((s, i) => (
+            <button
+              key={s.title}
+              type="button"
+              className={i === active ? 'is-on' : ''}
+              onClick={() => setActive(i)}
+              aria-label={`Go to ${s.title}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )
