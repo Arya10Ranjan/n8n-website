@@ -18,7 +18,10 @@
   height: 82px;
   padding: 0 10px 0 10px;
   border-radius: 999px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.9) inset,
     0 10px 30px -10px rgba(16, 30, 70, 0.22),
@@ -44,15 +47,15 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.nav-links a:hover { background: #f1f3f8; }
+.nav-links a:hover { background: rgba(255, 255, 255, 0.6); }
 
-/* first item reads as the current page, like the reference's green pill */
+/* first item reads as the current page */
 .nav-links a:first-child {
-  background: #bdf39a;
-  color: #0b2010;
+  background: #4a83f7;
+  color: #fff;
 }
 
-.nav-links a:first-child:hover { background: #b0ef88; }
+.nav-links a:first-child:hover { background: #3a74ee; }
 
 .nav-cta {
   display: inline-flex;
