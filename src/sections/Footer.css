@@ -1,0 +1,112 @@
+.footer {
+  padding: 96px 0 72px;
+  background: #fff;
+  border-top: 1px solid #edeff4;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 60px;
+  align-items: end;
+}
+
+/* --- left --- */
+.footer-mark {
+  display: block;
+  color: #4a83f7;
+  font-size: clamp(52px, 6vw, 78px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.footer-name {
+  margin-top: 22px;
+  color: var(--text-h);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.footer-desc {
+  margin-top: 12px;
+  max-width: 480px;
+  color: #6b7080;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* --- right --- */
+.footer-side {
+  text-align: right;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 34px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer-links a {
+  position: relative;
+  color: var(--text-h);
+  padding-bottom: 3px;
+  transition: color 0.18s ease;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  height: 1.5px;
+  border-radius: 2px;
+  background: #4a83f7;
+  transition: left 0.22s ease, right 0.22s ease;
+}
+
+.footer-links a:hover { color: #4a83f7; }
+.footer-links a:hover::after { left: 0; right: 0; }
+
+.footer-tagline {
+  margin-top: 34px;
+  color: #4a83f7;
+  font-size: clamp(17px, 1.7vw, 21px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.footer-legal {
+  margin-top: 26px;
+  color: #8b90a0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 860px) {
+  .footer { padding: 64px 0 52px; }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    align-items: start;
+  }
+
+  .footer-side { text-align: left; }
+  .footer-links { justify-content: flex-start; gap: 24px; }
+  .footer-desc { max-width: none; }
+  .footer-tagline { margin-top: 26px; }
+}
+
+@media (max-width: 520px) {
+  .footer-tagline { letter-spacing: 0.1em; }
+  .footer-legal { letter-spacing: 0.06em; }
+}

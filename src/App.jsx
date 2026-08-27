@@ -1,4 +1,5 @@
 import CTA from './sections/CTA'
+import Footer from './sections/Footer'
 import Hero from './sections/Hero'
 import Navbar from './sections/Navbar'
 import Showcase from './sections/Showcase'
@@ -14,6 +15,7 @@ export default function App() {
         <Showcase />
         <CTA />
       </main>
+      <Footer />
     </>
   )
 }
