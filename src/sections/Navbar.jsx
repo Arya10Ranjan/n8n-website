@@ -77,7 +77,12 @@ const links = [
     Icon: CommunityIcon,
     external: true,
   },
-  { label: 'Affiliate', href: '#affiliate', Icon: AffiliateIcon },
+  {
+    label: 'Affiliate',
+    href: 'https://automation.techdome.io/affiliate',
+    Icon: AffiliateIcon,
+    external: true,
+  },
 ]
 
 function Arrow() {

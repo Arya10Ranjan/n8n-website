@@ -2,8 +2,16 @@ import './Footer.css'
 
 const links = [
   { label: 'Home', href: '#top' },
-{    label: 'Join My Community',    href: 'https://www.skool.com/the-sparrow-nest-1884/about?ref=9d4d2ea6b175431698fab065d0c9f25c',    external: true,  },
-  { label: 'Affiliate', href: '#affiliate' },
+  {
+    label: 'Join My Community',
+    href: 'https://www.skool.com/the-sparrow-nest-1884/about?ref=9d4d2ea6b175431698fab065d0c9f25c',
+    external: true,
+  },
+  {
+    label: 'Affiliate',
+    href: 'https://automation.techdome.io/affiliate',
+    external: true,
+  },
 ]
 
 export default function Footer() {
@@ -26,7 +34,7 @@ export default function Footer() {
                 key={l.label}
                 href={l.href}
                 {...(l.external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
                   : {})}
               >
                 {l.label}
