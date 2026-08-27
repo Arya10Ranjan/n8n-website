@@ -15,65 +15,73 @@
   align-items: center;
   width: 100%;
   max-width: 1300px;
-  height: 82px;
-  padding: 0 10px 0 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.62);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  height: 84px;
+  padding: 0 10px;
   border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 10px 30px -10px rgba(16, 30, 70, 0.22),
-    0 30px 60px -30px rgba(16, 30, 70, 0.28);
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 0 34px rgba(120, 175, 255, 0.28),
+    0 24px 60px -28px rgba(4, 16, 60, 0.55);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
   flex: 1;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 .nav-links a {
-  padding: 15px 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border: 1px solid transparent;
   border-radius: 999px;
-  color: #0b0d14;
-  white-space: nowrap;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.nav-links a:hover { background: rgba(255, 255, 255, 0.6); }
-
-/* first item reads as the current page */
-.nav-links a:first-child {
-  background: #4a83f7;
   color: #fff;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.nav-links a:first-child:hover { background: #3a74ee; }
+.nav-links a svg { flex: none; opacity: 0.95; }
+
+.nav-links a:hover { background: rgba(255, 255, 255, 0.14); }
+
+/* current page */
+.nav-links a:first-child {
+  background: #3b7bff;
+  color: #fff;
+  box-shadow: 0 8px 22px -10px rgba(59, 123, 255, 0.9);
+}
+
+.nav-links a:first-child:hover { background: #2f6ef5; }
 
 .nav-cta {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 15px 26px;
+  gap: 10px;
+  padding: 16px 28px;
   border-radius: 999px;
-  background: #0b0d14;
+  background: #0a1330;
   color: #fff;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
+  box-shadow: 0 12px 28px -14px rgba(4, 12, 40, 0.9);
   transition: background 0.2s ease, transform 0.18s ease;
 }
 
 .nav-cta:hover {
-  background: #23262f;
+  background: #16224a;
   transform: translateY(-1px);
 }
 
@@ -89,48 +97,51 @@
   height: 46px;
   margin-left: 8px;
   padding: 0 11px;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 999px;
-  background: #f1f3f8;
+  background: rgba(255, 255, 255, 0.12);
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
-.nav-toggle:hover { background: #e6e9f1; }
+.nav-toggle:hover { background: rgba(255, 255, 255, 0.22); }
 
 .nav-toggle span {
   height: 2px;
   border-radius: 2px;
-  background: #0b0d14;
+  background: #fff;
 }
 
-@media (max-width: 900px) {
-  .nav { height: 70px; padding: 0 8px 0 14px; }
+@media (max-width: 980px) {
+  .nav { height: 72px; padding: 0 8px 0 14px; }
 
   .nav-toggle { display: flex; }
 
   .nav-links {
     position: absolute;
-    top: 82px;
+    top: 84px;
     left: 0;
     right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 4px;
     padding: 12px;
-    border-radius: 26px;
-    background: #fff;
-    box-shadow: 0 22px 55px -24px rgba(16, 30, 70, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 28px;
+    background: rgba(16, 30, 72, 0.72);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: 0 24px 60px -28px rgba(4, 16, 60, 0.7);
     display: none;
   }
 
   .nav-links.is-open { display: flex; }
-  .nav-links a { padding: 14px 18px; border-radius: 999px; }
+  .nav-links a { padding: 14px 18px; }
 
-  .nav-cta { margin-left: auto; padding: 12px 20px; font-size: 15px; }
+  .nav-cta { margin-left: auto; padding: 13px 22px; font-size: 15px; }
 }
 
 @media (max-width: 480px) {
   .nav-wrap { top: 18px; }
-  .nav-cta { padding: 11px 16px; font-size: 14px; }
+  .nav-cta { padding: 11px 17px; font-size: 14px; }
 }
