@@ -112,8 +112,11 @@ export default function Showcase() {
       <div className="showcase-tint" aria-hidden="true" />
 
       <div className="container showcase-head">
-        <h2>It&apos;s simple, responsive and fast.</h2>
-        <p>Pick a track and step through how we take it from idea to live.</p>
+        <h2>Automation Built Around Your Business.</h2>
+        <p>
+          Explore smarter workflows designed to simplify operations, reduce
+          manual work, and help your business scale.
+        </p>
 
         <div className="toggle" role="tablist" aria-label="Choose a track">
           <span
