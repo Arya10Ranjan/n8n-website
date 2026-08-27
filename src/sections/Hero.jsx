@@ -39,9 +39,8 @@ export default function Hero() {
         </span>
 
         <h1 className="hero-title">
-          Automate Smarter.
-          <br />
-          Grow Without Limits.
+          <span className="line-1">Automate Smarter.</span>
+          <span className="line-2">Grow Without Limits.</span>
         </h1>
 
         <p className="hero-sub">

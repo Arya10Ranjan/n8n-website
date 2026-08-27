@@ -49,7 +49,7 @@
 .hero-title {
   margin: 52px 0 0;
   color: #fff;
-  font-size: clamp(44px, 8.8vw, 134px);
+  font-size: 90px;
   font-weight: 700;
   line-height: 0.99;
   letter-spacing: -0.042em;
@@ -108,4 +108,17 @@
   }
 
   .hero-cta { margin-top: 34px; }
+}
+
+.hero-title .line-1,
+.hero-title .line-2 {
+  display: block;
+}
+
+.hero-title .line-1 {
+  font-size: clamp(30px, 4.6vw, 70px);
+}
+
+.hero-title .line-2 {
+  font-size: clamp(38px, 5.9vw, 90px);
 }
