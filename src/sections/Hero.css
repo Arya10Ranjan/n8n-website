@@ -116,9 +116,9 @@
 }
 
 .hero-title .line-1 {
-  font-size: clamp(30px, 4.6vw, 70px);
+  font-size: clamp(27px, 3.96vw, 50.4px);
 }
 
 .hero-title .line-2 {
-  font-size: clamp(38px, 5.9vw, 90px);
+  font-size: clamp(30px, 4.4vw, 56px);
 }
