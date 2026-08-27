@@ -82,6 +82,10 @@ export default function Navbar() {
   return (
     <div className="nav-wrap">
       <header className={`nav ${stuck ? "is-stuck" : ""}`}>
+        <a href="#top" className="nav-logo" aria-label="N8N — home">
+          N8N
+        </a>
+
         <nav className={`nav-links ${open ? 'is-open' : ''}`}>
           {links.map(({ label, href, Icon }) => (
             <a key={label} href={href} onClick={() => setOpen(false)}>
