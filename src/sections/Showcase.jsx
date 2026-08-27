@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './Showcase.css'
+import slide01 from '../assets/slide-01.png'
 
 const SHADES = [
   'linear-gradient(158deg, #6FC3F7 0%, #2E86D9 100%)',
@@ -12,7 +13,11 @@ const SHADES = [
 // Placeholder copy — swap the title/sub strings when you send the real ones.
 const DECKS = {
   dsl: [
-    { title: 'Discover', sub: 'We map every manual step your team repeats.' },
+    {
+      title: 'Discover',
+      sub: 'We map every manual step your team repeats.',
+      image: slide01,
+    },
     { title: 'Design', sub: 'A workflow blueprint built around your stack.' },
     { title: 'Scale', sub: 'From one task to millions, effortlessly.' },
     { title: 'Monitor', sub: 'Live logs and alerts on every run.' },
@@ -81,6 +86,7 @@ export default function Showcase() {
   const [mode, setMode] = useState('dsl')
   const [active, setActive] = useState(0)
   const stageRef = useRef(null)
+  const [zoomed, setZoomed] = useState(null)
 
   const slides = DECKS[mode]
   const count = slides.length
@@ -106,6 +112,19 @@ export default function Showcase() {
     el.addEventListener('keydown', onKey)
     return () => el.removeEventListener('keydown', onKey)
   }, [go])
+
+  // close the zoomed poster on Escape, and lock page scroll while it is open
+  useEffect(() => {
+    if (!zoomed) return
+    const onKey = (e) => e.key === "Escape" && setZoomed(null)
+    document.addEventListener("keydown", onKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.removeEventListener("keydown", onKey)
+      document.body.style.overflow = prev
+    }
+  }, [zoomed])
 
   return (
     <section className="showcase" id="how-it-works">
@@ -160,23 +179,47 @@ export default function Showcase() {
             return (
               <article
                 key={s.title}
-                className={`card ${isActive ? 'is-active' : 'is-door'}`}
+                className={`card ${isActive ? "is-active" : "is-door"} ${
+                  s.image ? "has-poster" : ""
+                }`}
                 aria-hidden={!isActive}
-                onClick={() => isDoor && go(off)}
+                onClick={() => {
+                  if (isDoor) go(off)
+                  else if (isActive && s.image) setZoomed(s)
+                }}
                 style={{
                   ...style,
-                  backgroundImage: SHADES[i % SHADES.length],
-                  pointerEvents: isDoor ? 'auto' : isActive ? 'auto' : 'none',
-                  cursor: isDoor ? 'pointer' : 'default',
+                  backgroundImage: s.image ? "none" : SHADES[i % SHADES.length],
+                  pointerEvents: isDoor ? "auto" : isActive ? "auto" : "none",
+                  cursor: isDoor || (isActive && s.image) ? "pointer" : "default",
                 }}
               >
-                <div className="card-body">
-                  <span className="card-num">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3>{s.title}</h3>
-                  <p>{s.sub}</p>
-                </div>
+                {s.image ? (
+                  <>
+                    <img className="card-poster" src={s.image} alt={s.title} />
+                    <span className="card-zoom" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="20" height="20">
+                        <g
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        >
+                          <circle cx="11" cy="11" r="6.5" />
+                          <path d="M15.8 15.8 20.5 20.5M11 8.4v5.2M8.4 11h5.2" />
+                        </g>
+                      </svg>
+                    </span>
+                  </>
+                ) : (
+                  <div className="card-body">
+                    <span className="card-num">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3>{s.title}</h3>
+                    <p>{s.sub}</p>
+                  </div>
+                )}
               </article>
             )
           })}
@@ -211,6 +254,34 @@ export default function Showcase() {
           ))}
         </div>
       </div>
+
+      {zoomed && (
+        <div
+          className="poster-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${zoomed.title} poster`}
+          onClick={() => setZoomed(null)}
+        >
+          <img src={zoomed.image} alt={zoomed.title} />
+          <button
+            type="button"
+            className="poster-close"
+            onClick={() => setZoomed(null)}
+            aria-label="Close poster"
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path
+                d="M6 6l12 12M18 6L6 18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      )}
     </section>
   )
 }

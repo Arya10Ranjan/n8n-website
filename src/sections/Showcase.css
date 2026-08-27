@@ -260,3 +260,123 @@
 }
 
 .card.is-door:hover { opacity: 0.7 !important; }
+
+/* --- poster slides --- */
+.card.has-poster {
+  padding: 0;
+  overflow: hidden;
+  background: #050b1c;
+}
+
+.card-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: transform 0.55s cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+/* hover: poster eases in and a zoom badge fades up */
+.card.has-poster.is-active:hover .card-poster { transform: scale(1.04); }
+
+.card-zoom {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(8, 20, 45, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+}
+
+.card.has-poster.is-active:hover .card-zoom {
+  opacity: 1;
+  transform: none;
+}
+
+.card.has-poster.is-active:hover .card-zoom:hover {
+  background: rgba(59, 123, 255, 0.85);
+}
+
+/* the poster fills the card, so its own ::after sheen would wash it out */
+.card.has-poster::after { display: none; }
+
+/* --- zoomed poster overlay --- */
+.poster-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 4vh 4vw;
+  background: rgba(4, 10, 26, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: zoom-out;
+  animation: poster-fade 0.28s ease both;
+}
+
+@keyframes poster-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.poster-modal img {
+  max-width: min(1200px, 92vw);
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 50px 110px -40px rgba(0, 0, 0, 0.9);
+  animation: poster-pop 0.34s cubic-bezier(0.22, 0.7, 0.2, 1) both;
+}
+
+@keyframes poster-pop {
+  from { opacity: 0; transform: scale(0.94) translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.poster-close {
+  position: fixed;
+  top: 22px;
+  right: 24px;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.18s ease;
+}
+
+.poster-close:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: scale(1.06);
+}
+
+@media (max-width: 620px) {
+  .card-zoom { right: 12px; bottom: 12px; width: 40px; height: 40px; }
+  .poster-close { top: 14px; right: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-poster, .card-zoom, .poster-modal, .poster-modal img {
+    transition: none;
+    animation: none;
+  }
+}
