@@ -60,23 +60,18 @@
 
 .cta-body {
   position: relative;
-  max-width: 1060px;
+  max-width: 740px;
   margin: 0 auto;
 }
 
 .cta-card h2 {
   color: #fff;
-  font-size: var(--h-line1);
+  font-size: clamp(27px, 3.6vw, 45px);
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: -0.035em;
   text-shadow: 0 2px 26px rgba(6, 22, 60, 0.4);
 }
-
-.cta-card h2 .line-1,
-.cta-card h2 .line-2 { display: block; }
-
-.cta-card h2 .line-2 { font-size: var(--h-line2); }
 
 .cta-card > .cta-body > p {
   margin: 16px auto 0;

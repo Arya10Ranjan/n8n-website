@@ -51,10 +51,12 @@ export default function CTA() {
           <span className="cta-dots" aria-hidden="true" />
           <span className="cta-sheen" aria-hidden="true" />
           <Circuit />
+
           <div className="cta-body">
             <h2>
-              <span className="line-1">Stop Doing Manual Work.</span>
-              <span className="line-2">Start Scaling With Automation.</span>
+              Stop Doing Manual Work.
+              <br />
+              Start Scaling With Automation.
             </h2>
 
             <p>
