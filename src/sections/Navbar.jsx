@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Navbar.css'
 
 function HomeIcon() {
@@ -70,10 +70,18 @@ function Arrow() {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [stuck, setStuck] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setStuck(window.scrollY > 12)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   return (
     <div className="nav-wrap">
-      <header className="nav">
+      <header className={`nav ${stuck ? "is-stuck" : ""}`}>
         <nav className={`nav-links ${open ? 'is-open' : ''}`}>
           {links.map(({ label, href, Icon }) => (
             <a key={label} href={href} onClick={() => setOpen(false)}>
