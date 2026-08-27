@@ -4,10 +4,12 @@
 }
 
 .cta-card {
+  max-width: 940px;
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
-  padding: 108px 40px 116px;
-  border-radius: 34px;
+  padding: 84px 48px 88px;
+  border-radius: 30px;
   text-align: center;
   isolation: isolate;
   background:
@@ -49,23 +51,23 @@
 
 .cta-circuit {
   position: absolute;
-  right: 46px;
-  bottom: 58px;
+  right: 34px;
+  bottom: 40px;
   z-index: -1;
-  width: 190px;
+  width: 150px;
   opacity: 0.55;
   pointer-events: none;
 }
 
 .cta-body {
   position: relative;
-  max-width: 900px;
+  max-width: 660px;
   margin: 0 auto;
 }
 
 .cta-card h2 {
   color: #fff;
-  font-size: clamp(28px, 4.4vw, 56px);
+  font-size: clamp(27px, 3.6vw, 45px);
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: -0.035em;
@@ -74,7 +76,7 @@
 
 .cta-card > .cta-body > p {
   margin: 24px auto 0;
-  max-width: 640px;
+  max-width: 560px;
   color: rgba(226, 234, 250, 0.9);
   font-size: clamp(16px, 1.5vw, 20px);
 }
@@ -84,8 +86,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: min(560px, 100%);
-  margin: 44px auto 0;
+  width: min(480px, 100%);
+  margin: 38px auto 0;
   padding: 8px 8px 8px 12px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
