@@ -24,7 +24,7 @@
 
 .hero-inner {
   width: 100%;
-  max-width: 1180px;
+  max-width: 1420px;
   text-align: center;
 }
 
@@ -49,17 +49,17 @@
 .hero-title {
   margin: 52px 0 0;
   color: #fff;
-  font-size: clamp(44px, 7.6vw, 108px);
+  font-size: clamp(44px, 8.8vw, 134px);
   font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  line-height: 0.99;
+  letter-spacing: -0.042em;
 }
 
 .hero-sub {
   margin: 50px auto 0;
-  max-width: 900px;
+  max-width: 960px;
   color: rgba(255, 255, 255, 0.93);
-  font-size: clamp(17px, 1.6vw, 25px);
+  font-size: clamp(17px, 1.72vw, 27px);
   font-weight: 400;
   line-height: 1.45;
   letter-spacing: -0.012em;
