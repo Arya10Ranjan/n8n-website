@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import './Showcase.css'
 import slide01 from '../assets/slide-01.png'
 import slide02 from '../assets/slide-02.png'
+import slide03 from '../assets/slide-03.png'
+import slide04 from '../assets/slide-04.png'
 
 const SHADES = [
   'linear-gradient(158deg, #6FC3F7 0%, #2E86D9 100%)',
@@ -24,8 +26,16 @@ const DECKS = {
       sub: 'A workflow blueprint built around your stack.',
       image: slide02,
     },
-    { title: 'Scale', sub: 'From one task to millions, effortlessly.' },
-    { title: 'Monitor', sub: 'Live logs and alerts on every run.' },
+    {
+      title: 'Scale',
+      sub: 'From one task to millions, effortlessly.',
+      image: slide03,
+    },
+    {
+      title: 'Monitor',
+      sub: 'Live logs and alerts on every run.',
+      image: slide04,
+    },
     { title: 'Ship', sub: 'Deploy automations in minutes, not weeks.' },
   ],
   vsl: [
