@@ -4,6 +4,10 @@ import slide01 from '../assets/slide-01.png'
 import slide02 from '../assets/slide-02.png'
 import slide03 from '../assets/slide-03.png'
 import slide04 from '../assets/slide-04.png'
+import slide05 from '../assets/slide-05.png'
+import slide06 from '../assets/slide-06.png'
+import slide07 from '../assets/slide-07.png'
+import slide08 from '../assets/slide-08.png'
 
 const SHADES = [
   'linear-gradient(158deg, #6FC3F7 0%, #2E86D9 100%)',
@@ -37,6 +41,26 @@ const DECKS = {
       image: slide04,
     },
     { title: 'Ship', sub: 'Deploy automations in minutes, not weeks.' },
+    {
+      title: 'Bottleneck',
+      sub: 'Processes that do not scale can hold the business back.',
+      image: slide05,
+    },
+    {
+      title: 'Failures',
+      sub: 'Broken processes can cause delays and missed tasks.',
+      image: slide06,
+    },
+    {
+      title: 'Follow-ups',
+      sub: 'Reminders and routine communication consume valuable time.',
+      image: slide07,
+    },
+    {
+      title: 'Growth',
+      sub: 'More business should not mean more manual workload.',
+      image: slide08,
+    },
   ],
   vsl: [
     { title: 'Script', sub: 'A story engineered to hold attention.' },
