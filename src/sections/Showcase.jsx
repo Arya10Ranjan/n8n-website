@@ -40,7 +40,6 @@ const DECKS = {
       sub: 'Live logs and alerts on every run.',
       image: slide04,
     },
-    { title: 'Ship', sub: 'Deploy automations in minutes, not weeks.' },
     {
       title: 'Bottleneck',
       sub: 'Processes that do not scale can hold the business back.',
