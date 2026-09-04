@@ -8,6 +8,8 @@ import slide05 from '../assets/slide-05.png'
 import slide06 from '../assets/slide-06.png'
 import slide07 from '../assets/slide-07.png'
 import slide08 from '../assets/slide-08.png'
+import slide09 from '../assets/slide-09.png'
+import slide10 from '../assets/slide-10.png'
 
 const SHADES = [
   'linear-gradient(158deg, #6FC3F7 0%, #2E86D9 100%)',
@@ -59,6 +61,16 @@ const DECKS = {
       title: 'Growth',
       sub: 'More business should not mean more manual workload.',
       image: slide08,
+    },
+    {
+      title: "Insights",
+      sub: "Critical insights can be buried in documents and data.",
+      image: slide09,
+    },
+    {
+      title: "Bottleneck II",
+      sub: "Processes that do not scale can hold the business back.",
+      image: slide10,
     },
   ],
   vsl: [
