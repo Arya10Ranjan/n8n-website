@@ -182,3 +182,16 @@
   .contact-overlay, .contact-card { animation: none; }
   .contact-close:hover { transform: none; }
 }
+
+/* required marker + optional hint on field labels */
+.contact-field > span em {
+  color: #3b7bff;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.contact-field > span small {
+  color: #9aa0b0;
+  font-size: 13px;
+  font-weight: 500;
+}

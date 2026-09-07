@@ -105,7 +105,9 @@ export default function ContactModal({ open, onClose }) {
           <form className="contact-form" onSubmit={onSubmit}>
             <div className="contact-row">
               <label className="contact-field">
-                <span>Your name</span>
+                <span>
+                  Your name <em aria-hidden="true">*</em>
+                </span>
                 <input
                   ref={firstFieldRef}
                   type="text"
@@ -117,10 +119,9 @@ export default function ContactModal({ open, onClose }) {
               </label>
 
               <label className="contact-field">
-                <span>Email address</span>
+                <span>Email address <small>(optional)</small></span>
                 <input
                   type="email"
-                  required
                   placeholder="example@domain.com"
                   value={form.email}
                   onChange={set('email')}
@@ -130,9 +131,12 @@ export default function ContactModal({ open, onClose }) {
 
             <div className="contact-row">
               <label className="contact-field">
-                <span>Phone</span>
+                <span>
+                  Phone <em aria-hidden="true">*</em>
+                </span>
                 <input
                   type="tel"
+                  required
                   placeholder="+1-999-999-9999"
                   value={form.phone}
                   onChange={set('phone')}
@@ -140,7 +144,7 @@ export default function ContactModal({ open, onClose }) {
               </label>
 
               <label className="contact-field">
-                <span>Website URL</span>
+                <span>Website URL <small>(optional)</small></span>
                 <input
                   type="url"
                   placeholder="https://example.com"
@@ -151,10 +155,9 @@ export default function ContactModal({ open, onClose }) {
             </div>
 
             <label className="contact-field">
-              <span>Message</span>
+              <span>Message <small>(optional)</small></span>
               <textarea
                 rows={4}
-                required
                 placeholder="Tell us briefly about your needs"
                 value={form.message}
                 onChange={set('message')}
