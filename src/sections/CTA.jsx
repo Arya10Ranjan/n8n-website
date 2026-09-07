@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import ContactModal from './ContactModal'
 import './CTA.css'
 
 function Arrow() {
@@ -32,6 +34,8 @@ function Circuit() {
 }
 
 export default function CTA() {
+  const [contactOpen, setContactOpen] = useState(false)
+
   return (
     <section className="cta" id="get-started">
       <div className="container">
@@ -52,13 +56,18 @@ export default function CTA() {
               their output.
             </p>
 
-            {/* Point this href at your booking page / contact form when ready. */}
-            <a href="#contact" className="cta-btn">
+            <button
+              type="button"
+              className="cta-btn"
+              onClick={() => setContactOpen(true)}
+            >
               Contact Us <Arrow />
-            </a>
+            </button>
           </div>
         </div>
       </div>
+
+      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
     </section>
   )
 }
