@@ -88,22 +88,26 @@
   gap: 10px;
   margin-top: 30px;
   padding: 15px 34px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 0;
   border-radius: 999px;
-  background: linear-gradient(180deg, #1f4fe4 0%, #0b2ea8 100%);
-  color: #fff;
+  background: #fff;
+  color: #10121a;
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
   cursor: pointer;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.22) inset,
-    0 14px 30px -12px rgba(9, 30, 110, 0.9);
-  transition: transform 0.18s ease, filter 0.2s ease;
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 16px 34px -14px rgba(4, 14, 45, 0.75);
+  transition: transform 0.18s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cta-btn:hover { transform: translateY(-1px); filter: brightness(1.12); }
+.cta-btn:hover {
+  transform: translateY(-2px);
+  background: #f4f7ff;
+  box-shadow: 0 22px 44px -14px rgba(4, 14, 45, 0.8);
+}
 .cta-btn:active { transform: translateY(0); }
 .cta-btn svg { transition: transform 0.2s ease; }
 .cta-btn:hover svg { transform: translate(2px, -2px); }
