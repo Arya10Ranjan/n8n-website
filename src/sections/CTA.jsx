@@ -2,6 +2,8 @@ import { useState } from 'react'
 import ContactModal from './ContactModal'
 import './CTA.css'
 
+const CALENDLY_URL = 'https://calendly.com/rahul-joshi-pgm/n8n-consultation'
+
 function Arrow() {
   return (
     <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
@@ -56,13 +58,24 @@ export default function CTA() {
               their output.
             </p>
 
-            <button
-              type="button"
-              className="cta-btn"
-              onClick={() => setContactOpen(true)}
-            >
-              Contact Us <Arrow />
-            </button>
+            <div className="cta-actions">
+              <a
+                href={CALENDLY_URL}
+                className="cta-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact Us <Arrow />
+              </a>
+
+              <button
+                type="button"
+                className="cta-btn-ghost"
+                onClick={() => setContactOpen(true)}
+              >
+                Send a message
+              </button>
+            </div>
           </div>
         </div>
       </div>
