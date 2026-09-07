@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import ContactModal from './ContactModal'
 import './CTA.css'
 
 const CALENDLY_URL = 'https://calendly.com/rahul-joshi-pgm/n8n-consultation'
@@ -36,8 +34,6 @@ function Circuit() {
 }
 
 export default function CTA() {
-  const [contactOpen, setContactOpen] = useState(false)
-
   return (
     <section className="cta" id="get-started">
       <div className="container">
@@ -58,29 +54,17 @@ export default function CTA() {
               their output.
             </p>
 
-            <div className="cta-actions">
-              <a
-                href={CALENDLY_URL}
-                className="cta-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Contact Us <Arrow />
-              </a>
-
-              <button
-                type="button"
-                className="cta-btn-ghost"
-                onClick={() => setContactOpen(true)}
-              >
-                Send a message
-              </button>
-            </div>
+            <a
+              href={CALENDLY_URL}
+              className="cta-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contact Us <Arrow />
+            </a>
           </div>
         </div>
       </div>
-
-      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
     </section>
   )
 }
