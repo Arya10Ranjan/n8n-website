@@ -1,17 +1,16 @@
-import { useState } from 'react'
 import './CTA.css'
 
-function PaperPlane() {
+function Arrow() {
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
       <path
-        d="M21.5 2.5L2.8 9.9c-.7.3-.7 1.3 0 1.6l6.6 2.4 2.4 6.6c.3.7 1.3.7 1.6 0L21.5 2.5z"
+        d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.7"
+        strokeWidth="1.8"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path d="M21.5 2.5L9.4 13.9" fill="none" stroke="currentColor" strokeWidth="1.7" />
     </svg>
   )
 }
@@ -33,17 +32,6 @@ function Circuit() {
 }
 
 export default function CTA() {
-  const [email, setEmail] = useState('')
-  const [sent, setSent] = useState(false)
-
-  const onSubmit = (e) => {
-    e.preventDefault()
-    if (!email.trim()) return
-    // No backend yet — wire this to your list provider when ready.
-    setSent(true)
-    setEmail('')
-  }
-
   return (
     <section className="cta" id="get-started">
       <div className="container">
@@ -64,24 +52,10 @@ export default function CTA() {
               their output.
             </p>
 
-            <form className="cta-form" onSubmit={onSubmit}>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email address"
-                aria-label="Email address"
-              />
-              <button type="submit" className="cta-submit">
-                <PaperPlane />
-                Subscribe
-              </button>
-            </form>
-
-            <p className="cta-note" role="status">
-              {sent ? "You're on the list — we'll be in touch shortly." : '\u00A0'}
-            </p>
+            {/* Point this href at your booking page / contact form when ready. */}
+            <a href="#contact" className="cta-btn">
+              Contact Us <Arrow />
+            </a>
           </div>
         </div>
       </div>
