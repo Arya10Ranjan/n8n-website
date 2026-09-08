@@ -18,9 +18,9 @@
   max-width: 980px;
   height: 66px;
   padding: 0 7px 0 22px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.52);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(18px) saturate(150%);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   box-shadow: 0 14px 36px -20px rgba(10, 26, 70, 0.32);
@@ -172,6 +172,6 @@
 /* once scrolled, firm up the glass so it stays legible over white sections */
 .nav.is-stuck {
   border-color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 12px 32px -16px rgba(10, 26, 70, 0.28);
 }
