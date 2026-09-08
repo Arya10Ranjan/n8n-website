@@ -31,7 +31,7 @@
 .nav-logo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 0;
   position: relative;
   z-index: 1;
   flex: none;
@@ -45,11 +45,12 @@
 
 .nav-logo:hover { opacity: 0.78; }
 
-.nav-mark {
-  width: 40px;
-  height: auto;
-  flex: none;
+.nav-logo img {
+  display: block;
+  height: 30px;
+  width: auto;
 }
+
 
 .nav-links {
   position: relative;
@@ -134,8 +135,7 @@
 
 @media (max-width: 980px) {
   .nav { height: 68px; padding: 0 8px 0 18px; }
-  .nav-logo { font-size: 20px; }
-  .nav-mark { width: 35px; }
+  .nav-logo img { height: 26px; }
 
   .nav-toggle { display: flex; }
 

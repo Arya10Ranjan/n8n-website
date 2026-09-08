@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Navbar.css'
+import logo from '../assets/logo-n8n-rahul.png'
 
 function HomeIcon() {
   return (
@@ -47,27 +48,6 @@ function AffiliateIcon() {
   )
 }
 
-function N8nMark() {
-  return (
-    <svg className="nav-mark" viewBox="0 0 96 60" aria-hidden="true">
-      <g
-        fill="none"
-        stroke="#EA4B71"
-        strokeWidth="6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M18.5 30h7" />
-        <path d="M38.5 30c7.5 0 7.5-14 15-14h9" />
-        <path d="M38.5 30c7.5 0 7.5 14 15 14h1" />
-        <circle cx="12" cy="30" r="6.5" />
-        <circle cx="32" cy="30" r="6.5" />
-        <circle cx="70" cy="16" r="7.5" />
-        <circle cx="62" cy="44" r="7.5" />
-      </g>
-    </svg>
-  )
-}
 
 const links = [
   { label: 'Home', href: '#top', Icon: HomeIcon },
@@ -114,9 +94,8 @@ export default function Navbar() {
   return (
     <div className="nav-wrap">
       <header className={`nav ${stuck ? "is-stuck" : ""}`}>
-        <a href="#top" className="nav-logo" aria-label="n8n — home">
-          <N8nMark />
-          <span>n8n</span>
+        <a href="#top" className="nav-logo" aria-label="n8n x Rahul — home">
+          <img src={logo} alt="n8n x Rahul" />
         </a>
         <nav className={`nav-links ${open ? 'is-open' : ''}`}>
           {links.map(({ label, href, Icon, external }) => (
