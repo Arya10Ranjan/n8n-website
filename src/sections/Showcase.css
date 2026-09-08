@@ -1,6 +1,6 @@
 .showcase {
   position: relative;
-  padding: 120px 0 130px;
+  padding: 120px 0 160px;
   background: #fff;
   overflow: hidden;
 }
@@ -211,7 +211,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -6px;
+  bottom: -52px;
   z-index: 20;
   display: flex;
   justify-content: center;
